@@ -1,5 +1,5 @@
 # Entorno Desarrollo
-¿Cómo poner en marcha el entorno de desarrollo?
+Cómo poner en marcha el entorno de desarrollo
 
 ## Crear archivo de configuración
 Se deberá crear el archivo `app/dbconfiguration.yml` que contendrá la conexión del backend con la base de datos, se deberá crear dentro de la carpeta app con la siguiente información:
