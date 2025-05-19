@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    container_name: films-mantenimiento
+    volumes:
+      - ./app:/var/www/html/app
+      - ./config/prod/virtualhosts/filmscfv.mantenimiento.gleeze.com.conf:/etc/apache2/sites-enabled/filmscfv.mantenimiento.gleeze.com.conf
+    ports:
+      - "80:80"
+    restart: always

@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  db:
+    image: mysql:8.0.35-debian
+    container_name: films-backend-db
+    ports: 
+      - "3306:3306"
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=films
+    volumes:
+      - ./config/prod/mysql_dump:/docker-entrypoint-initdb.d
+      - mysql-data:/var/lib/mysql #Opcional
+  app:
+    build: .
+    container_name: fimls-backend-api
+    volumes:
+      - ./app:/var/www/html/app
+      - ./config/prod/virtualhosts/filmscfv.api.gleeze.com.conf:/etc/apache2/sites-available/filmscfv.api.gleeze.com.conf
+    ports:
+      - "8080:80"
+    restart: always
+    depends_on:
+      - db
+volumes:
+  mysql-data: #Opcional (si queremos mantener los datos de la base de datos)

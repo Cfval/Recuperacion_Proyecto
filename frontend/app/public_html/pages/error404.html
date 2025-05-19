@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - Página no encontrada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 6em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        #face {
+            width: 200px;
+            height: auto;
+        }
+
+        #left-eye, #right-eye {
+            transition: transform 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Error 404</h1>
+        <p>Página no encontrada</p>
+        <svg id="face" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="90" fill="none" stroke="#555" stroke-width="5" />
+            <circle id="left-eye" cx="65" cy="70" r="10" fill="#555" />
+            <circle id="right-eye" cx="135" cy="70" r="10" fill="#555" />
+            <path d="M80 130 Q100 110 120 130" fill="none" stroke="#555" stroke-width="5" />
+        </svg>
+    </div>
+
+    <script>
+const leftEye = document.getElementById('left-eye');
+const rightEye = document.getElementById('right-eye');
+
+document.addEventListener('mousemove', (event) => {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    const eyeDistance = 10; // Distancia entre los ojos
+
+    const leftEyeX = 65;
+    const leftEyeY = 70;
+    const rightEyeX = 135;
+    const rightEyeY = 70;
+
+    const midPointX = (leftEyeX + rightEyeX) * 4;
+    const midPointY = (leftEyeY + rightEyeY) * 4 ;
+
+    const angle = Math.atan2(mouseY - midPointY, mouseX - midPointX);
+
+    const newXLeft = leftEyeX + Math.cos(angle) * eyeDistance;
+    const newYLeft = leftEyeY + Math.sin(angle) * eyeDistance;
+    const newXRight = rightEyeX + Math.cos(angle) * eyeDistance;
+    const newYRight = rightEyeY + Math.sin(angle) * eyeDistance;
+
+    leftEye.setAttribute('cx', newXLeft);
+    leftEye.setAttribute('cy', newYLeft);
+    rightEye.setAttribute('cx', newXRight);
+    rightEye.setAttribute('cy', newYRight);
+});
+    </script>
+</body>
+</html>

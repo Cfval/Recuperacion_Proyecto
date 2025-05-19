@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: films-mantenimiento
+    volumes:
+      - ./app:/var/www/html/app
+      - ./config/dev/virtualhosts/films.mantenimiento.dev.com.conf:/etc/apache2/sites-enabled/films.mantenimiento.dev.com.conf
+    ports:
+      - "82:80"
