@@ -1,19 +1,15 @@
 # Entorno Desarrollo
-Cómo poner en marcha el entorno de desarrollo
+¿Cómo poner en marcha el entorno de desarrollo?
 
-# Instalación de Docker
-sudo apt update && sudo apt install -y docker.io
-
-# Instalación de Docker Compose
-sudo apt install -y docker-compose
-
-# Instalación de Apache2
-sudo apt install -y apache2 
-
-# Clonar el repositorio 
-```bash
-git clone https://github.com/Cfval/Recuperacion_Proyecto.git
+## Crear archivo de configuración
+Se deberá crear el archivo `app/dbconfiguration.yml` que contendrá la conexión del backend con la base de datos, se deberá crear dentro de la carpeta app con la siguiente información:
+```yml
+ip: "db"
+dbname: "films"
+user: "dbuser"
+pass: "dbuser"
 ```
+
 ## Crear y arrancar infraestructura
 
 ```bash
@@ -24,7 +20,6 @@ Añade al archivo `hosts` el dominio:
 ```bash
 <ip_maquina_anfitrión> films.api.dev.com
 ```
-
 ## Otras acciones
 Arrancar o parar entorno
 ```bash

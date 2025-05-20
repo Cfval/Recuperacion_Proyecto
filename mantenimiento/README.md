@@ -35,7 +35,7 @@ docker compose up -d
 ## VirtualHosts
 Debe estar creado y configurado el dominio para que apunte al entorno de producción:
 ```bash
-filmscfv.mantenimiento.gleeze.com
+filmsara.mantenimiento.chickenkiller.com
 ```
 
 ## Otras acciones
